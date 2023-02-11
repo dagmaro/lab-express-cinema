@@ -7,10 +7,11 @@ const moviesArr = require("./movies.json");
 
 // 3. insertar a la data en la DB
 
-MoviesModel.insertMany(moviesArr)
-  .then(() => {
-    console.log("peliculas!", moviesArr);
-  })
-  .catch((err) => {
-    next(err);
-  });
+async function insertMovies () {
+  try{
+      const response = await MoviesModel.insertMany(moviesArr)
+  } catch (err) {
+      console.log(err)
+  }
+}
+insertMovies()

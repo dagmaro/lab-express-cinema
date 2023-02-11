@@ -22,4 +22,16 @@ router.get("/movies", (req, res, next) => {
     });
 });
 
+
+// GET "/movie/id"
+router.get("/movies/:movieId", (req, res, next) => {
+  console.log(req.params.movieId)
+  const {movieId} = req.params
+MoviesModel(movieId)
+
+})
+
+
+
+
 module.exports = router;
