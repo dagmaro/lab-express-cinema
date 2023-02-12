@@ -12,7 +12,6 @@ router.get("/movies", (req, res, next) => {
   MoviesModel.find()
     //.select("title")
     .then((movies) => {
-      console.log(movies);
       res.render("movie/movies.hbs", {
         listOfmovies: movies,
       });
@@ -28,7 +27,6 @@ router.get("/movies/:movieId", (req, res, next) => {
   const { movieId } = req.params;
   MoviesModel.findById(movieId)
     .then((response) => {
-      console.log(response);
       res.render("movie/details.hbs", {
         detailsOfOneMovie: response,
       });
