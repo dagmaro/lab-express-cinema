@@ -14,7 +14,7 @@ router.get("/movies", (req, res, next) => {
     .then((movies) => {
       console.log(movies);
       res.render("movie/movies.hbs", {
-        listOfmovies: movies
+        listOfmovies: movies,
       });
     })
     .catch((error) => {
@@ -22,16 +22,20 @@ router.get("/movies", (req, res, next) => {
     });
 });
 
-
 // GET "/movie/id"
 router.get("/movies/:movieId", (req, res, next) => {
-  console.log(req.params.movieId)
-  const {movieId} = req.params
-MoviesModel(movieId)
-
-})
-
-
-
+  console.log(req.params.movieId);
+  const { movieId } = req.params;
+  MoviesModel.findById(movieId)
+    .then((response) => {
+      console.log(response);
+      res.render("movie/details.hbs", {
+        detailsOfOneMovie: response,
+      });
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
 
 module.exports = router;

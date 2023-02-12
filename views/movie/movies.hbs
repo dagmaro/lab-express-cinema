@@ -1,14 +1,18 @@
-<div>
-  <h3>Ironhack Cinema</h3>
-  <p>Click on the movie to check the showtimes!</p>
 
-  {{#each listOfmovies}}
-    <div>
-      <img src="{{this.image}}" alt="movie" />
-    </div>
-    <br>
-    {{this.title}}
-    <br>
-    <p><a href="">See more</a></p>
-</div>
- {{/each}}
+  <div class="title-movies">
+    <h3>Ironhack Cinema</h3>
+    <p>Click on the movie to check the showtimes!</p>
+  </div>
+  <ul class="movie-container" id="styling-container">
+    {{#each listOfmovies}}
+      <li>
+        <img src="{{this.image}}" alt="movie" width="180px" />
+        <br />
+        {{this.title}}
+        <br />
+        <p><a href="/movies/{{this._id}}">See more</a></p>
+      </li>
+
+    {{/each}}
+
+  </ul>
